@@ -1,0 +1,31 @@
+{% extends "home.html" %}
+ 
+{% block title %}Send Email App{% endblock %}
+ 
+{% block content %}
+<div class="container py-2"><p><h3>Send Email App</h3></p>
+    {% for message in get_flashed_messages(request) %}
+        <div class="alert alert-secondary">{{ message.message }}</div>
+    {% endfor %}
+    <form id="contactForm" action="/submit" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-control" name="name" id="name" type="text" placeholder="Name" />
+        </div>
+ 
+        <div class="mb-3">
+            <label class="form-label" for="emailAddress">Email Address</label>
+            <input class="form-control" name="emailAddress" id="emailAddress" type="email" placeholder="Email Address" />
+        </div>
+   
+        <div class="mb-3">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-control" name="message" id="message" type="text" placeholder="Message" style="height: 7rem;"></textarea>
+        </div>
+   
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
